@@ -1,0 +1,28 @@
+.container {
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+}
+
+
+.homeBtn {
+    text-decoration: underline;
+    color: #1762a0;
+    cursor: pointer;
+}
+
+.darkBackground {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background: rgba(0,0,0,0.5);
+    z-index: 50;
+}

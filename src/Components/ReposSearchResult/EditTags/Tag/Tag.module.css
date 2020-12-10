@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    font-size: 14px;
+    margin: 3px 5px;
+    background: blue;
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    align-items: center;
+}
+
+.cancelTagButton {
+    margin-left: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+.container {
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.container:hover {
+    background: blue;
+    color: white;
+}

@@ -1,0 +1,81 @@
+.container {
+    width: 350px;
+    height: auto;
+    background: white;
+    position: absolute;
+    border: solid black 3px;
+    border-radius: 5px;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -175px;
+}
+
+.innerContainer {
+    width: 300px;
+    padding: 20px 0;
+}
+
+.title {
+    font-size: 12px;
+}
+
+.input {
+    font-size: 14px;
+    border: 0;
+    outline: 0;
+    padding: 0 5px;
+}
+
+.inputsWrapper {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.inputBorder {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: solid black 3px;
+    border-radius: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 30px;
+    padding: 3px 0;
+}
+
+.buttonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    width: 100px;
+    box-shadow: 3px 3px black;
+    border: solid black 2px;
+    border-radius: 3px;
+}
+
+.buttonsContainer>* {
+    background: none;
+    height: 24px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.buttonsContainer>*:nth-of-type(1) {
+    border-right: solid black 2px;
+}
+
+.buttonsContainer>*:hover {
+    background: #95bcf2;
+}
+
+.repeatedTagMessage {
+    margin-top: 10px;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+}
