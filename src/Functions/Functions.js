@@ -6,18 +6,17 @@ const sleeper = (ms) => {
     };
 }
 
-const submitSearch = async (e, name, setSearchResult, history,
-    users, setLoading) => {
+const submitSearch = async (e, name, setSearchResult, history, setLoading) => {
     e.preventDefault();
     await fetch('https://api.github.com/users/' + name + '/starred')
         .then(res => res.json())
         //.then(sleeper(10000)) // simulates a 10 seconds delay
         .then(res => {
-            setSearchResult(res);
-            localStorage.setItem('searchResult', JSON.stringify(res));
-            history.push('/' + users);
+                setSearchResult(res);
+                localStorage.setItem('searchResult', JSON.stringify(res));
+            history.push('/result');
             setLoading(false);
-        });
+        })
 }
 
 const saveTagsInLocalStorage = (id, tagsArray) => {

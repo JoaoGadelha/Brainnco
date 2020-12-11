@@ -5,7 +5,7 @@ import { Context } from "../../Context.js";
 import { useHistory } from "react-router-dom";
 
 const ReposSearchBar = (props) => {
-    let [searchInput, setSearchInput] = useState('bradtraversy');
+    let [searchInput, setSearchInput] = useState('');
     let { setSearchResult, setLoading } = useContext(Context);
     const history = useHistory();
 
@@ -15,7 +15,6 @@ const ReposSearchBar = (props) => {
                 searchInput,
                 setSearchResult,
                 history,
-                props.match.params.users,
                 setLoading);
             setLoading(true)}}
                 className={styles.form}

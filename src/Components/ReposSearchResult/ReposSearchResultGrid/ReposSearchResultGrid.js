@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './ReposSearchResultGrid.module.css'
 import ReposSearchResultGridRow from './ReposSearchResultGridRow/ReposSearchResultGridRow'
 import { Context } from "../../../Context";
@@ -9,6 +9,7 @@ const ReposSearchResultGrid = ({
     filterByTagInput
 }) => {
     let { searchResult } = useContext(Context);
+
     return (
         <div className={styles.container}>
             {/* This renders the first line of the search result table*/}
@@ -19,7 +20,7 @@ const ReposSearchResultGrid = ({
                 }} header={true}
             />
             {/* This renders the remaining lines */}
-            {searchResult
+            {searchResult.length > 0 && searchResult
                 .map((item, i) =>
                     <ReposSearchResultGridRow
                         key={i} data={item} index={i}

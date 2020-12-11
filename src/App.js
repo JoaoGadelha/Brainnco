@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Components/Header/Header'
 import { Context } from './Context'
 import Loading from './Components/Loading/Loading'
-import { useState, useContext } from 'react'
+import {  useContext } from 'react'
 
 
 function App() {
@@ -15,11 +15,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header  />
         <Switch>
           {!loading && <Route exact path='/' component={ReposSearchBar} />}
-          {loading && <Loading exact path='/' component={Loading} />}
-          <Route path='/:users' component={ReposSearchResult} />
+          {loading && <Route exact path='/' component={Loading} />}
+          <Route path='/result'>
+            <ReposSearchResult  />
+          </Route>
         </Switch>
       </div>
     </Router>
