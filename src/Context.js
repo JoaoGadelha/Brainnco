@@ -4,9 +4,7 @@ import { useState } from "react";
 export const Context = React.createContext();
 
 export const Provider = (props) => {
-  // this is a non exhaustive suggestions array
-  // used only in development.
-  // For production, it should be way longer than this.
+  //  stores suggestions for tag names.
   let [suggestionsArray, setSuggestionsArray] = useState(
     [
       'react', 'node', 'express', 'docker',
@@ -15,15 +13,12 @@ export const Provider = (props) => {
     ]
   );
   let [loading, setLoading] = useState(false);
+    // stores all the starred repositores obtained
+    // from the user seach in the home page.
   let [searchResult, setSearchResult] = useState([]);
-  // defines the index of the currently clicked repository
-  // in the repository search results page.
-  // The user can choose one repository in order to
-  // edit its tags in the repository search results page.
-  // The repositories are stored in an array of objects.
-  // So, when the user clicks on a repository in order to
-  // edit his/her tags, the index of this repository is saved
-  // in the currentRepoIndex state variable below.
+  // When the user clicks on a repository in order to
+  // edit its tags, the index of this repository is saved
+  // in currentRepoIndex.
   let [currentRepoIndex, setCurrentRepoIndex] = useState();
 
   useEffect(() => {

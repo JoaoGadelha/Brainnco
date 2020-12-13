@@ -6,17 +6,23 @@ const sleeper = (ms) => {
     };
 }
 
+// Function called when the user submits a search in the search bar
+// present in the home page. The user inputs a string "name", 
+// a fetch request is performed with a URL constructed with "name", 
+// the search result is saved in the "searchResult" state created in Context.js
+// and the page routes to "/result" to display the results of the search.
 const submitSearch = async (e, name, setSearchResult, history, setLoading) => {
     e.preventDefault();
-    await fetch('https://api.github.com/users/' + name + '/starred')
-        .then(res => res.json())
-        //.then(sleeper(10000)) // simulates a 10 seconds delay
-        .then(res => {
-                setSearchResult(res);
-                localStorage.setItem('searchResult', JSON.stringify(res));
-            history.push('/result');
-            setLoading(false);
-        })
+    let data = await fetch('https://api.github.com/users/' + name + '/starred');
+    let jsonData = await data.json();
+    // simulates a 10 seconds delay
+    //sleeper(10000) 
+    setSearchResult(jsonData);
+    localStorage.setItem('searchResult', JSON.stringify(jsonData));
+    history.push('/result');
+    setLoading(false);
+    // returns jsonData for testing purposes
+    return jsonData
 }
 
 const saveTagsInLocalStorage = (id, tagsArray) => {
@@ -36,13 +42,15 @@ const removeTag = (index, tagsArray, setTagsArray) => {
         }
     })
     setTagsArray(auxArray);
+    // returns auxArray for testing purposes
+    return auxArray 
 }
 
 
 // addTag - function to add a new tag
-// Returns a boolean value signaling if the tag already existed or not
-// true - when the tag the user is trying to add was already added previously
-// false - when the tag didn't exist and will be created
+// Returns a boolean value signaling if the tag already exists or not
+// true - when the tag the user is trying to add already exists
+// false - when the tag doesn't exist and will be created
 const addTag = (tag, tagsArray, setTagsArray) => {
     let auxArray = [...tagsArray];
     let response = false;
@@ -59,6 +67,18 @@ const addTag = (tag, tagsArray, setTagsArray) => {
     return response;
 }
 
+// tagsInput - string inputed by the user to serve as the name 
+// of a new tag.
+// suggestionsArray - stores all the suggestions for names of tags.
+// This function takes the tagsInput string and compares
+// it to each string present in suggestionsArray. If 
+// one or more contains the string tagsInput, then they're
+// added to an auxiliary array. 
+// For example, if the user inputs 're' and suggestionsArray
+// is equal to ['react','express','node'],
+// then the auxiliary array is equal to ['react','express'],
+// since only 'react' and 'express' contain the string 're',
+// but 'node' does not.
 const extractTagsFromInput = (tagsInput, suggestionsArray) => {
     if (tagsInput === '') {
         return []
